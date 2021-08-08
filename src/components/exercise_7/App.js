@@ -1,18 +1,21 @@
 import React from "react";
+// Don't modify this line. It is here to make React
+// work correctly in this exercise environment.
+const useState = React.useState;
 
-const users = [
-  { id: 1, name: "Leanne Graham" },
-  { id: 2, name: "Ervin Howell" },
-  { id: 3, name: "Clementine Bauch" },
-  { id: 4, name: "Patricia Lebsack" },
-];
+// don't change the Component name "App"
+export default function App() {
+    const [count, setcount] = useState(0)
 
-export default class App extends React.Component {
-  render() {
-    const renderedUsers = users.map(({ id, name }) => {
-      return <li key={id}>{name}</li>;
-    });
+    const onButtonClick = () => { 
+        setcount(count + 1);
+    };
 
-    return <ul>{renderedUsers}</ul>;
-  }
+    return (
+        <div>
+            <button onClick={onButtonClick}>Click Me!</button>
+
+            <h1>Current Count: {count}</h1>
+        </div>
+    );
 }

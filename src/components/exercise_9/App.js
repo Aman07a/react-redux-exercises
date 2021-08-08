@@ -1,21 +1,28 @@
 import React from "react";
-// Don't modify this line. It is here to make React
-// work correctly in this exercise environment.
-const useState = React.useState;
+import { axios } from "./axios";
+const { useState, useEffect } = React;
 
-// don't change the Component name "App"
-export default function App() {
-    const [count, setcount] = useState(0)
+const URL = "https://jsonplaceholder.typicode.com/users";
 
-    const onButtonClick = () => { 
-        setcount(count + 1);
+const App = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    // Add code here to fetch some users with axios and the URL variable
+    // then update the 'users' piece of state
+    const fetchUsers = async () => {
+      const { data } = await axios.get(URL);
+
+      setUsers(data);
     };
+    fetchUsers();
+  }, []);
 
-    return (
-        <div>
-            <button onClick={onButtonClick}>Click Me!</button>
+  const renderedUsers = users.map((user) => {
+    return <li key={user.id}>{user.name}</li>;
+  });
 
-            <h1>Current Count: {count}</h1>
-        </div>
-    );
-}
+  return <ul>{renderedUsers}</ul>;
+};
+
+export default App;

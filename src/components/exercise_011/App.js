@@ -1,18 +1,19 @@
+// You don't need to make any changes to this file!
+// Take a look at SongList.js
+
 import React from "react";
-import usePosts from "./usePosts";
+import { SongList } from "./SongList";
 
-export default function App() {
-  // Add in code here to use the 'usePosts' hook.
-  const posts = usePosts();
-
-  const renderedPosts = posts.map((post) => {
-    return <li key={post.id}>{post.title}</li>;
-  });
-
-  return (
-    <div>
-      <h3>Posts</h3>
-      <ul>{renderedPosts}</ul>
-    </div>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        />
+        <SongList />
+      </div>
+    );
+  }
 }

@@ -1,19 +1,18 @@
-// You don't need to change this file!
-// Take a look at 'validator.js' instead!
-
 import React from "react";
-import Validator from "./Validator";
+
+const users = [
+  { id: 1, name: "Leanne Graham" },
+  { id: 2, name: "Ervin Howell" },
+  { id: 3, name: "Clementine Bauch" },
+  { id: 4, name: "Patricia Lebsack" },
+];
 
 export default class App extends React.Component {
   render() {
-    return (
-      <div>
-        <Validator />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-        />
-      </div>
-    );
+    const renderedUsers = users.map(({ id, name }) => {
+      return <li key={id}>{name}</li>;
+    });
+
+    return <ul>{renderedUsers}</ul>;
   }
 }
